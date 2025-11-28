@@ -129,11 +129,11 @@ public class Wordle {
             attempt++;
         }
 
+        // Reveal secret word if lost
         if (!won) {
-            System.out.println("Sorry... the word was: " + secret);
+            System.out.println("Sorry, you did not guess the word. The word was: " + secret);
         }
 
         inp.close();
     }
 }
-
