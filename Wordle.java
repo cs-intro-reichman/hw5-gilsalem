@@ -105,7 +105,7 @@ public class Wordle {
                 System.out.print("Enter your guess (5-letter word): ");
                 guess = inp.readString();
 
-                // ✅ VALIDATION: Only check length, not dictionary
+                // VALIDATION: Only check length
                 if (guess.length() != WORD_LENGTH) {
                     System.out.println("Invalid word. Please try again.");
                 } else {
@@ -124,15 +124,17 @@ public class Wordle {
             if (isAllGreen(results[attempt])) {
                 System.out.println("Congratulations! You guessed the word in " + (attempt + 1) + " attempts.");
                 won = true;
-            } 
-            // If this was the last attempt and the player did not win
-            else if (attempt == MAX_ATTEMPTS - 1) {
-                System.out.println("Sorry, you did not guess the word. The word was: " + secret);
             }
 
             attempt++;
         }
 
+        // Reveal secret word if not won (after all attempts)
+        if (!won) {
+            System.out.println("Sorry, you did not guess the word. The word was: " + secret);
+        }
+
         inp.close();
     }
 }
+
