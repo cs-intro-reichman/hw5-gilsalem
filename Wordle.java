@@ -124,14 +124,13 @@ public class Wordle {
             if (isAllGreen(results[attempt])) {
                 System.out.println("Congratulations! You guessed the word in " + (attempt + 1) + " attempts.");
                 won = true;
+            } 
+            // If this was the last attempt and the player did not win
+            else if (attempt == MAX_ATTEMPTS - 1) {
+                System.out.println("Sorry, you did not guess the word. The word was: " + secret);
             }
 
             attempt++;
-        }
-
-        // Reveal secret word if lost
-        if (!won) {
-            System.out.println("Sorry, you did not guess the word. The word was: " + secret);
         }
 
         inp.close();
